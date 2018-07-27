@@ -18,8 +18,23 @@ Simple and easy.
 
 ## Full array loop
 <img src="./images/full_array.png">  
-One thing we have to consider is, few seconds(1~2sec in 100000 and 1000000 array length, 10~20sec in 10000000 and 20000000 array length) can be affected by envirenment. it means, this result is just sample and not always same.
+One thing we have to consider is, few seconds(1~2sec in 100000 and 1000000 array length, 10~20sec in 10000000 and 20000000 array length) can be affected by envirenment. it means, this result is just sample and not always same.  
 
 What result show.  
 
 1. for and while loop use similar way to loop. forEach, reduce and filter are also similar. map and indexOf use each different way.
+2. map is slower than others.
+3. indexOf is faster than others.
+
+It looks interesting!  
+
+Actually, we already know why map, forEach, reduce and filter are slow. Threse four method use function to loop. Calling function need more time than for or while. Even map, map have to make whole array(same with base array) to run the cycle. As a result, for, while and indexOf are the fastest array loop method.  
+So, can this result make any meaningful changes?  
+
+# But...  
+
+Unfortunately, answer is NO.  
+
+Javascript engine do the JIT compile when loop or function called too many time. It make loop as machine code or more effcient. Eventually, loop depends on JS engine and there's no meaning in the time result. What make slow or fast is the time complexity, not loop and running time. So, the point is, answer of "what should we use for loop?" is "by their own purpose."  
+
+I know this is not a funny end, but test result is pretty funny. I think i can choose one when i need to do long array loop.  
